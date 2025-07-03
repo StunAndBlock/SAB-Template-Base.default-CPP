@@ -15,7 +15,8 @@ CC = g++
 ## !<>
 
 ## <name of binary>
-TARGET = name.$(EXECUTABLE_PREFIX)
+NAME = 
+TARGET = $(NAME).$(EXECUTABLE_PREFIX)
 ## !<>
 
 ## <dir-realted variables>
@@ -47,11 +48,11 @@ OBJECTS = $(patsubst %.cpp,%.o,$(CPP))
 
 
 ## <Make main system>
-.PHONY: all clean build
+.PHONY: all clean target
 
-all: build
+all: target
 
-build: $(OBJECTS) | $(BUILD_DIR)
+target: $(OBJECTS) | $(BUILD_DIR)
 	$(CC) $(OBJECTS) $(LDFLAGS) -o $(BUILD_DIR)/$(TARGET)  
 
 ### do not touch dynamic object compilation
